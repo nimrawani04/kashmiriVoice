@@ -1,0 +1,36 @@
+# Python Bytecode and Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.venv/
+env/
+venv/
+ENV/
+
+# Large Audio Datasets & Raw Downloads (Do not push gigabytes of audio to GitHub)
+data/raw/
+data/processed/
+data/samples/*.wav
+!data/samples/.gitkeep
+
+# Model Checkpoints and Weights (Files exceeding GitHub 100MB limit)
+models/checkpoints/*.pt
+models/checkpoints/*.pth
+models/*.pt
+models/*.pth
+models/*.h5
+!models/checkpoints/.gitkeep
+
+# System and IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs and Scratch
+logs/*.log
+logs/*.txt
+scratch/
