@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kashmiri Voice (کٲشُر آواز) - Neural TTS & Regional Accent Classifier</title>
+  <meta name="description" content="State-of-the-art Neural Speech Synthesis and Regional Kashmiri Dialect & Accent Classification across Kamraz, Maraz, Kupwara, Bandipora, Shopian, and Islamabad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <div class="container">
+    <header>
+      <div class="logo-badge">🎙️ Kashmiri Neural Audio Suite</div>
+      <h1><span class="kashmiri-title">کٲشُر آواز</span> Kashmiri Voice</h1>
+      <p class="subtitle">Neural Speech Synthesis (TTS) & Dialect Classifier conditioned across Kashmir valley regional accents.</p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-nav" aria-label="Engine Modes">
+      <button class="tab-btn active" data-target="tab-tts">
+        <span>🗣️</span> Voice Synthesizer (TTS)
+      </button>
+      <button class="tab-btn" data-target="tab-accent">
+        <span>🎯</span> Regional Accent Classifier
+      </button>
+      <button class="tab-btn" data-target="tab-corpus">
+        <span>📊</span> Corpus & Dialect Explorer
+      </button>
+    </nav>
+
+    <!-- Tab 1: Speech Synthesis (TTS) -->
+    <section id="tab-tts" class="tab-content active">
+      <div class="grid-2col">
+        <!-- Input Column -->
+        <div class="glass-card">
+          <div class="card-header">
+            <h2>✍️ Kashmiri Text Input</h2>
+            <p>Type or paste Kashmiri in Perso-Arabic script. Use character helpers for Kashmiri-specific vowels.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="preset-select">Preset Kashmiri Sentences</label>
+            <select id="preset-select" class="select-input">
+              <option value="">-- Choose a benchmark phrase --</option>
+              <option value="سلام! تُہؠ چھِوا ٹھیک؟">Greeting: سلام! تُہؠ چھِوا ٹھیک؟ (Hello! Are you doing well?)</option>
+              <option value="کٲشُر بولُن چھُ واریاہ مۆدُر۔">Expression: کٲشُر بولُن چھُ واریاہ مۆدُر۔ (Speaking Kashmiri is very sweet.)</option>
+              <option value="میٚہ چھُ کٲشُر زَبان پَسَند۔">Affection: میٚہ چھُ کٲشُر زَبان پَسَند۔ (I love the Kashmiri language.)</option>
+              <option value="آز چھُ مۄسَم واریاہ خوبصوٗرَتھ۔">Nature: آز چھُ مۄسَم واریاہ خوبصوٗرَتھ۔ (Today the weather is beautiful.)</option>
+              <option value="اکھ، زٕ، ترےٚ، ژور، پانژھ۔">Counting: اکھ، زٕ، ترےٚ، ژور، پانژھ۔ (One, two, three, four, five.)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="kashmiri-text">Kashmiri Perso-Arabic Text (کٲشُر)</label>
+            <textarea id="kashmiri-text" class="kashmiri-textarea" placeholder="کٲشُر عبارت لِکھِو ییٚتین...">سلام! تُہؠ چھِوا ٹھیک؟ کٲشُر بولُن چھُ واریاہ مۆدُر۔</textarea>
+            
+            <label style="margin-top: 0.75rem;">Kashmiri Character Helpers</label>
+            <div class="keyboard-bar">
+              <button type="button" class="kb-key" title="Kashmiri Central Vowel (Aa)">ٲ</button>
+              <button type="button" class="kb-key" title="Kashmiri Rounded Vowel (O)">ۄ</button>
+              <button type="button" class="kb-key" title="Kashmiri Neutral Vowel">ۆ</button>
+              <button type="button" class="kb-key" title="Palatalization Glide (Plat Ye)">ؠ</button>
+              <button type="button" class="kb-key" title="Feminine Suffix Ye">ۍ</button>
+              <button type="button" class="kb-key" title="Tsh / Tsa sound">ژ</button>
+              <button type="button" class="kb-key" title="Tte">ٹ</button>
+              <button type="button" class="kb-key" title="Dda">ڈ</button>
+              <button type="button" class="kb-key" title="Rra">ڑ</button>
+              <button type="button" class="kb-key" title="Hamza on Wow">ؤ</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Select Regional Dialect / Accent Voice</label>
+            <div class="dialect-grid">
+              <div class="dialect-card selected" data-dialect="kupwara">
+                <div class="dialect-name">Kupwara</div>
+                <div class="dialect-zone">Kamraz (Northern Kashmir)</div>
+              </div>
+              <div class="dialect-card" data-dialect="bandipora">
+                <div class="dialect-name">Bandipora</div>
+                <div class="dialect-zone">Wular Valley (Northern)</div>
+              </div>
+              <div class="dialect-card" data-dialect="shopian">
+                <div class="dialect-name">Shopian</div>
+                <div class="dialect-zone">Maraz (Southern Kashmir)</div>
+              </div>
+              <div class="dialect-card" data-dialect="islamabad">
+                <div class="dialect-name">Islamabad</div>
+                <div class="dialect-zone">Anantnag / Maraz (Southern)</div>
+              </div>
+            </div>
+          </div>
+
+          <button id="synth-btn" class="btn-primary">
+            <span>🎙️ Synthesize Kashmiri Speech</span>
+          </button>
+          <div id="synth-status" style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-secondary); text-align: center;"></div>
+        </div>
+
+        <!-- Output Column -->
+        <div class="glass-card">
+          <div class="card-header">
+            <h2>🎧 Audio Player & Waveform</h2>
+            <p>Live 22,050 Hz playback with acoustic frequency visualizer.</p>
+          </div>
+
+          <div class="player-container">
+            <canvas id="visualizer-canvas" class="visualizer-canvas" width="400" height="90"></canvas>
+            <audio id="tts-audio-player" controls preload="auto"></audio>
+            <a id="download-audio" href="#" download="kashmiri_voice.wav" class="btn-primary" style="text-decoration: none; width: auto; padding: 0.5rem 1.25rem; font-size: 0.9rem;" hidden>
+              ⬇️ Download WAV Audio
+            </a>
+          </div>
+
+          <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(13, 17, 23, 0.5); border-radius: 12px; font-size: 0.85rem; color: var(--text-secondary);">
+            <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">ℹ️ Acoustic Pipeline Details:</div>
+            • <strong>Sampling Rate:</strong> 22,050 Hz (High-fidelity Neural standard)<br>
+            • <strong>Mel Bands:</strong> 80-channel log-mel spectrogram<br>
+            • <strong>Loudness:</strong> Standardized to ITU-R BS.1770 -23 LUFS<br>
+            • <strong>Architecture:</strong> Multi-speaker character encoder with regional accent embeddings
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 2: Regional Accent Classifier -->
+    <section id="tab-accent" class="tab-content">
+      <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+        <div class="card-header" style="text-align: center;">
+          <h2>🎯 Kashmiri Regional Accent Classifier</h2>
+          <p>Powered by machine learning models and acoustic prosody features (shehzensidiq dataset). Upload any Kashmiri speech recording to predict the regional dialect.</p>
+        </div>
+
+        <div id="dropzone" class="dropzone">
+          <div class="dropzone-icon">🎙️</div>
+          <p>Drag & drop a Kashmiri audio recording here, or <span>browse files</span></p>
+          <p id="file-name-display" style="margin-top: 0.5rem; color: #58a6ff; font-weight: 600;">Supports WAV, MP3, OGG</p>
+          <input type="file" id="audio-file-input" accept="audio/*" style="display: none;">
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <button id="classify-btn" class="btn-primary" disabled>
+            <span>🎯 Identify Kashmiri Accent</span>
+          </button>
+        </div>
+
+        <!-- Result Card -->
+        <div id="classify-result" class="result-card">
+          <div style="text-align: center; margin-bottom: 1rem;">
+            <div id="pred-district" class="result-badge">Kupwara</div>
+            <div style="font-size: 0.95rem; color: var(--text-secondary);">
+              Dialect Zone: <strong id="pred-zone" style="color: #fff;">Kamraz (Northern Kashmir)</strong>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
+              Confidence: <span id="pred-conf" style="color: var(--success); font-weight: 700;">90.9%</span>
+            </div>
+          </div>
+
+          <label>District Probability Distribution</label>
+          <div id="probs-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 3: Corpus & Dialect Explorer -->
+    <section id="tab-corpus" class="tab-content">
+      <div class="glass-card">
+        <div class="card-header">
+          <h2>📊 Kashmiri Speech Corpora Statistics</h2>
+          <p>Overview of the 3 integrated datasets powering this platform.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-value">526</div>
+            <div class="stat-label">Total Raw Speech Samples</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">220</div>
+            <div class="stat-label">Curated & Standardized TTS Utterances</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">4</div>
+            <div class="stat-label">Regional Dialect Clusters</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">22,050 Hz</div>
+            <div class="stat-label">Standard Audio Sample Rate</div>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <div style="padding: 1.25rem; background: rgba(13, 17, 23, 0.7); border-radius: 14px; border: 1px solid var(--card-border);">
+            <h3 style="font-size: 1.1rem; color: #58a6ff; margin-bottom: 0.75rem;">📚 Integrated Speech Corpora</h3>
+            <ul style="padding-left: 1.2rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8;">
+              <li><strong>Hugging Face Corpus:</strong> Continuous sentence speech with authentic Kashmiri Perso-Arabic orthography.</li>
+              <li><strong>Kaggle Kashmiri Dataset:</strong> 375 spoken vocabulary recordings across 14 Kashmiri word classes (*آہ, ادسا, بَند, بیٚیہِ, etc.*).</li>
+              <li><strong>Accent Classification Dataset:</strong> Field recordings across Kupwara, Bandipora, Shopian, and Islamabad districts.</li>
+            </ul>
+          </div>
+
+          <div style="padding: 1.25rem; background: rgba(13, 17, 23, 0.7); border-radius: 14px; border: 1px solid var(--card-border);">
+            <h3 style="font-size: 1.1rem; color: #a371f7; margin-bottom: 0.75rem;">🗺️ Dialect Zones of Kashmir Valley</h3>
+            <ul style="padding-left: 1.2rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8;">
+              <li><strong>Kamraz (Northern):</strong> Spoken in Kupwara & Baramulla districts. Characterized by distinctive vowel height and retroflex articulation.</li>
+              <li><strong>Wular Zone:</strong> Spoken around Bandipora and northern lakes with distinctive intonation contours.</li>
+              <li><strong>Maraz (Southern):</strong> Spoken in Shopian, Islamabad (Anantnag), and Pulwama with prolonged central vowels (*ٲ*).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Kashmiri Voice Engine & Dialect Classification Suite • NVIDIA RTX 4050 GPU Accelerated • کٲشُر بولُن چھُ مۆدُر</p>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
